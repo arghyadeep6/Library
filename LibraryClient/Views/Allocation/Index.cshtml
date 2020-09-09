@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LibraryClient.Models.Allocation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Allocate</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.allocationid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bookid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.studentid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.allocationid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.studentid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.allocationid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.allocationid }) |
+                @Html.ActionLink("Deallocate", "Delete", new { id=item.allocationid})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
